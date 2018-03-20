@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
+<head> <meta charset="UTF-8">
   <title>Hold Shift to Check Multiple Checkboxes</title>
 </head>
 <body>
@@ -99,6 +98,25 @@
   </div>
 
 <script>
+    var checkboxes = Array.from(document.querySelectorAll('.item input'));
+    let lastClick = 0;
+
+    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleClick));
+
+    function handleClick(e) {
+        if (!e.shiftKey) {
+            lastClick = checkboxes.findIndex(element => this === element);
+            return;
+        }
+
+        const thisClick = checkboxes.findIndex(element => this === element);
+
+        checkboxes.forEach((checkbox, index) => {
+            if ((index <= lastClick && index >= thisClick) || (index <= thisClick && index >= lastClick)) {
+                checkbox.checked = true;
+            }
+        });
+    }
 </script>
 </body>
 </html>

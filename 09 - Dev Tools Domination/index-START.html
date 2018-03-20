@@ -8,6 +8,7 @@
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
+
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
@@ -16,30 +17,60 @@
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
-
+    const p = document.querySelector('p');
     // Regular
+    console.log('hello');
 
     // Interpolated
+    console.log('Hellow I am a %s string!', 'foo')
 
     // Styled
+    console.log('%c I am some great text', 'font-size: 50px; color: red; text-shadow: 10px 5px 1px blue;');
 
     // warning!
+    console.warn('oh NOO');
 
     // Error :|
+    console.error('crap! 💩');
 
     // Info
+    console.info('test')
 
     // Testing
+    console.assert(1 === 2, 'that is wrong');
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    console.dir(p);
 
     // Grouping together
+    console.clear();
+    dogs.forEach(dog => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age * 7 } in dog years`);
+        console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+        .then(data => data.json())
+        .then(data => {
+            console.timeEnd('fetching data');
+            console.log(data);
+        });
+
+    console.table(dogs);
 
   </script>
 </body>

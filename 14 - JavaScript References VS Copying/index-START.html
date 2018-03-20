@@ -8,15 +8,23 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    age = 200;
+
+    let name = 'Joel';
+    let name2 = name;
+    name = 'Cool';
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
-
     // and we want to make a copy of it.
+    const team = players;
 
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
+    // players[3] = 'Lux';
 
     // now here is the problem!
 
@@ -27,10 +35,16 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    const team2 = players.slice();;
+
 
     // or create a new array and concat the old one in
+    const team3 = [].concat(players);
 
     // or use the new ES6 Spread
+    const team4 = [...players];
+
+    const team5 = Array.from(players);
 
     // now when we update it, the original one isn't changed
 
@@ -41,14 +55,27 @@
       name: 'Wes Bos',
       age: 80
     };
+    const joel = person;
+    // joel.name = 'Joel';
 
     // and think we make a copy:
-
+    const joel2 = Object.assign({}, person);
     // how do we take a copy instead?
 
     // We will hopefully soon see the object ...spread
+    const joel3 = {...person};
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const joel5 = {
+        name: 'Joel',
+        age: 37,
+        social: {
+            twitter: '@joel',
+            facebook: 'joel.jacob'
+        }
+    };
+    const dev = Object.assign({}, joel5);
+
 
   </script>
 
